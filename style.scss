@@ -1,22 +1,33 @@
 /* GENERAL */
 
 $main-font: 'Amatic SC';
+$dark-color: #111;
+$main-color: #a20021;
+$text-color: #fff;
+$highlight-color: #00a31c;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $main-font;
+  font-size: 20px;
+  color: $text-color;
+}
 
 /* HEADER */
 
 .main-nav {
   padding: 0;
+  background-color: $dark-color;
 }
 
-.logo {
-  font-family: 'Cookie', cursive;
-  font-size: 4rem;
-  color: #c0c0c0;
+.logo h1 {
+  font-size: 5rem;
   margin: 0 1rem;
   padding: 0;
-
+  color: $main-color;
   &:hover {
-    color: #9a9a9a;
+    color: $main-color;
   }
 }
 
@@ -28,29 +39,139 @@ $main-font: 'Amatic SC';
   margin: 0;
   font-family: $main-font;
   font-size: 2rem;
-  color: #fff;
-  padding: 1.5rem;
+  color: $text-color;
+  padding: 1rem;
+}
 
-  &:hover {
-    color: #9a9a9a;
-    text-decoration: none;
-    background: #222;
-  }
+.nav-link:hover {
+  color: $highlight-color;
+  padding-bottom: 14px;
+  border-bottom: 2px solid $highlight-color;
 }
 
 .fa-bars {
-  color: #fff;
+  color: $text-color;
 }
 
-/* SECTION */
+/* HERO */
 
 .hero {
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
-  background: url(../images/pexels-lucas-guimarães-4094895.jpg) no-repeat 50%;
+  background-color: $main-color;
   background-size: cover;
+  background-position: center 50%;
+  background-repeat: no-repeat;
   position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: $main-color, $alpha: 0.7);
+  }
+}
+
+.hero-text {
+  position: relative;
+  top: 30%;
+  text-align: center;
+  color: $text-color;
+  z-index: 1;
+}
+
+/* CTA */
+
+.call-to-action {
+  position: relative;
+  background-color: $dark-color;
+  padding: 1rem;
+  margin: 6rem auto;
+}
+
+.cta-div {
+  width: 50%;
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.cta-text {
+  padding: 0;
+}
+
+.cta-paragraph {
+  font-size: 2rem;
+  padding: 0;
+}
+
+.email {
+  margin-top: 2rem;
+  padding: 2rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.email-btn {
+  margin-top: 1rem;
+  background-color: $main-color;
+  border: 1px solid $main-color;
+  color: $text-color;
+  padding: 0.5rem 1.5rem;
+  font-size: 2rem;
+
+  &:hover {
+    background-color: $dark-color;
+    border: 1px solid $highlight-color;
+    color: $highlight-color;
+    transition: 0.3s ease-in-out;
+  }
+}
+
+/* FOOTER */
+
+footer {
+  margin: 0;
+  border: none;
+  background-color: $dark-color;
+  width: auto;
+}
+
+.footer-container {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.social-media {
+  font-size: 2rem;
+  margin: 1rem 0.5rem;
+
+  &:hover {
+    color: $highlight-color;
+  }
 }
 
 /* MEDIA QUERIES */
+
+@media (max-width: 925px) {
+}
+
+@media (max-width: 925px) {
+  .hero-images {
+    height: 60vh;
+  }
+}
+
+@media (max-width: 545px) {
+  .email {
+    font-size: 20px;
+
+    &:placeholder-shown {
+      font-size: 20px;
+    }
+  }
+}
