@@ -1,0 +1,56 @@
+/* GENERAL */
+
+$main-font: 'Amatic SC';
+
+/* HEADER */
+
+.main-nav {
+  padding: 0;
+}
+
+.logo {
+  font-family: 'Cookie', cursive;
+  font-size: 4rem;
+  color: #c0c0c0;
+  margin: 0 1rem;
+  padding: 0;
+
+  &:hover {
+    color: #9a9a9a;
+  }
+}
+
+#main-nav-items {
+  justify-content: right;
+}
+
+.nav-item {
+  margin: 0;
+  font-family: $main-font;
+  font-size: 2rem;
+  color: #fff;
+  padding: 1.5rem;
+
+  &:hover {
+    color: #9a9a9a;
+    text-decoration: none;
+    background: #222;
+  }
+}
+
+.fa-bars {
+  color: #fff;
+}
+
+/* SECTION */
+
+.hero {
+  width: 100%;
+  height: 50vh;
+  overflow: hidden;
+  background: url(../images/pexels-lucas-guimarães-4094895.jpg) no-repeat 50%;
+  background-size: cover;
+  position: relative;
+}
+
+/* MEDIA QUERIES */
