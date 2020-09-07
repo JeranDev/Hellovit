@@ -107,6 +107,31 @@ body {
   }
 }
 
+/* FORM */
+
+.form {
+  background-color: $dark-color;
+  margin: 6rem auto;
+  padding: 4rem 3rem;
+  text-align: center;
+  width: 60vw;
+}
+
+.contact-header {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.contact-text {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.contact-btn {
+  padding: 1rem 2rem;
+  margin: 0;
+}
+
 /* FOOTER */
 
 footer {
@@ -131,6 +156,12 @@ footer {
 }
 
 /* MEDIA QUERIES */
+
+@media screen and (max-width: 1000px) {
+  .form {
+    width: 90vw;
+  }
+}
 
 @media screen and (max-width: 725px) {
   .hero {

@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- FONTS-->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
-      rel="stylesheet"
-    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap"
       rel="stylesheet"
@@ -38,8 +35,8 @@
   <body>
     <!-- HEADER -->
     <header class="header">
-      <nav class="main-nav navbar navbar-expand-lg bg-dark">
-        <a href="index.html" class="logo navbar-brand">Hellovit</a>
+      <nav class="main-nav navbar navbar-expand-lg">
+        <a href="index.html" class="logo navbar-brand"><h1>Hellovit</h1></a>
         <button
           class="navbar-toggler"
           type="button"
@@ -55,25 +52,71 @@
           <div class="mr-0 mt-2 mt-lg-0">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a href="shows.html" class="nav-item">Shows</a>
+                <a href="shows.html" class="nav-link nav-item">Shows</a>
               </li>
               <li class="nav-item">
-                <a href="merch.html" class="nav-item">Merch</a>
+                <a href="merch.html" class="nav-link nav-item">Merch</a>
               </li>
               <li class="nav-item">
-                <a href="artists.html" class="nav-item">Artists</a>
+                <a href="artists.html" class="nav-link nav-item">Artists</a>
               </li>
               <li class="nav-item">
-                <a href="contact.html" class="nav-item">Contact</a>
+                <a href="contact.html" class="nav-link nav-item">Contact</a>
               </li>
               <li class="nav-item">
-                <a href="about.html" class="nav-item">About</a>
+                <a href="about.html" class="nav-link nav-item">About</a>
               </li>
             </ul>
           </div>
         </span>
       </nav>
     </header>
+
+    <!-- FORM -->
+    <section class="form">
+      <h1 class="contact-header">Get in Contact</h1>
+      <form action="#" class="contact-form">
+        <div class="form-row">
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control contact-text"
+              placeholder="Your Name"
+            />
+          </div>
+          <div class="col-sm-6">
+            <input
+              type="text"
+              class="form-control contact-text"
+              placeholder="Your E-Mail"
+            />
+          </div>
+          <div class="form-group col form-box">
+            <textarea
+              class="form-control contact-text"
+              id="textarea"
+              rows="3"
+              placeholder="Your Message Goes Here"
+            ></textarea>
+          </div>
+        </div>
+        <input
+          type="submit"
+          id="email-submit"
+          class="email-btn contact-btn btn btn-light btn-lg"
+          value="Send"
+        />
+      </form>
+    </section>
+    <!-- FOOTER -->
+    <footer class="navbar">
+      <div class="footer-container">
+        <i class="social-media fab fa-facebook"></i>
+        <i class="social-media fab fa-instagram"></i>
+        <i class="social-media fab fa-twitter"></i>
+        <h3>2020 All Rights Reserved</h3>
+      </div>
+    </footer>
 
     <!-- BOOTSTRAP JQUERY-->
     <script
@@ -91,5 +134,8 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+
+    <!--JAVASCRIPT -->
+    <script src="code/main.min.js"></script>
   </body>
 </html>
