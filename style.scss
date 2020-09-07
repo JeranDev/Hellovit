@@ -21,7 +21,7 @@ body {
   background-color: $dark-color;
 }
 
-.logo h1 {
+.logo > h1 {
   font-size: 5rem;
   margin: 0 1rem;
   padding: 0;
@@ -56,33 +56,8 @@ body {
 /* HERO */
 
 .hero {
-  width: 100%;
-  height: 60vh;
+  height: 70vh;
   overflow: hidden;
-  background-color: $main-color;
-  background-size: cover;
-  background-position: center 50%;
-  background-repeat: no-repeat;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba($color: $main-color, $alpha: 0.7);
-  }
-}
-
-.hero-text {
-  position: relative;
-  top: 30%;
-  text-align: center;
-  color: $text-color;
-  z-index: 1;
 }
 
 /* CTA */
@@ -157,21 +132,31 @@ footer {
 
 /* MEDIA QUERIES */
 
-@media (max-width: 925px) {
-}
+@media screen and (max-width: 725px) {
+  .hero {
+    height: 40vh;
 
-@media (max-width: 925px) {
-  .hero-images {
-    height: 60vh;
+    .hero-images {
+      height: 40vh;
+    }
   }
 }
 
-@media (max-width: 545px) {
+@media screen and (max-width: 545px) {
+  .logo > h1 {
+    font-size: 3rem;
+  }
+
   .email {
     font-size: 20px;
 
     &:placeholder-shown {
       font-size: 20px;
     }
+  }
+
+  .call-to-action {
+    padding: 0.1rem;
+    margin: 3rem 0;
   }
 }
