@@ -56,8 +56,24 @@ body {
 /* HERO */
 
 .hero {
+  position: relative;
   height: 70vh;
   overflow: hidden;
+  text-align: left;
+}
+
+.hero-text {
+  position: absolute;
+  z-index: 2;
+  color: $text-color;
+  top: 20%;
+  left: 20%;
+  right: 0%;
+  font-size: 3.5rem;
+}
+
+p > .hero-btn {
+  padding: 1rem 1.5rem;
 }
 
 /* CTA */
@@ -171,7 +187,7 @@ body {
 
 .nav-link.about-paypal {
   font-size: 5rem;
-  color: $highlight-color;
+  color: $main-color;
   width: 15%;
   margin: 0.5rem auto;
   padding: 0;
@@ -179,7 +195,7 @@ body {
   &:hover {
     border: none;
     padding: 0;
-    color: $text-color;
+    color: $highlight-color;
   }
 }
 
@@ -212,15 +228,29 @@ footer {
   .form {
     width: 90vw;
   }
+
+  .hero {
+    text-align: center;
+    height: auto;
+  }
+
+  .hero-text {
+    top: 5%;
+    left: 0;
+    font-size: 2rem;
+  }
 }
 
 @media screen and (max-width: 725px) {
   .hero {
-    height: 40vh;
+    text-align: center;
+    height: auto;
+  }
 
-    .hero-images {
-      height: 40vh;
-    }
+  .hero-text {
+    top: 5%;
+    left: 0;
+    font-size: 2rem;
   }
 }
 
@@ -240,5 +270,14 @@ footer {
   .call-to-action {
     padding: 0.1rem;
     margin: 3rem 0;
+  }
+
+  .hero-text {
+    font-size: 1.5rem;
+  }
+
+  #hero-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
   }
 }
