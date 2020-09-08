@@ -111,7 +111,7 @@ body {
 
 .form {
   background-color: $dark-color;
-  margin: 6rem auto;
+  margin: 4.28rem auto;
   padding: 4rem 3rem;
   text-align: center;
   width: 60vw;
@@ -120,6 +120,7 @@ body {
 .contact-header {
   font-size: 4rem;
   margin-bottom: 2rem;
+  text-decoration: underline;
 }
 
 .contact-text {
@@ -130,6 +131,56 @@ body {
 .contact-btn {
   padding: 1rem 2rem;
   margin: 0;
+}
+
+/* ABOUT */
+
+.about {
+  background-color: $dark-color;
+  margin: 5rem auto;
+  width: 60vw;
+  text-align: center;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+.about-header {
+  font-size: 4rem;
+  text-decoration: underline;
+}
+
+.about-container {
+  text-align: left;
+}
+
+.about-subheader {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.about-image {
+  border-radius: 100%;
+  width: 20%;
+  padding: 0.7rem 0;
+}
+
+.about-paragraph {
+  font-family: sans-serif;
+  padding: 0.5rem 0;
+}
+
+.nav-link.about-paypal {
+  font-size: 5rem;
+  color: $highlight-color;
+  width: 15%;
+  margin: 0.5rem auto;
+  padding: 0;
+
+  &:hover {
+    border: none;
+    padding: 0;
+    color: $text-color;
+  }
 }
 
 /* FOOTER */
@@ -151,7 +202,7 @@ footer {
   margin: 1rem 0.5rem;
 
   &:hover {
-    color: $highlight-color;
+    color: $dark-color;
   }
 }
 
