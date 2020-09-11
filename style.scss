@@ -14,6 +14,10 @@ body {
   color: $text-color;
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 /* HEADER */
 
 .main-nav {
@@ -21,14 +25,8 @@ body {
   background-color: $dark-color;
 }
 
-.logo > h1 {
-  font-size: 5rem;
-  margin: 0 1rem;
-  padding: 0;
-  color: $main-color;
-  &:hover {
-    color: $main-color;
-  }
+.logo {
+  margin-left: 2rem;
 }
 
 #main-nav-items {
@@ -62,18 +60,18 @@ body {
   text-align: left;
 }
 
+.album-img {
+  border: 3px solid $dark-color;
+}
+
 .hero-text {
   position: absolute;
   z-index: 2;
   color: $text-color;
-  top: 20%;
+  top: 10%;
   left: 20%;
   right: 0%;
   font-size: 3.5rem;
-}
-
-p > .hero-btn {
-  padding: 1rem 1.5rem;
 }
 
 /* CTA */
@@ -97,6 +95,7 @@ p > .hero-btn {
 
 .cta-paragraph {
   font-size: 2rem;
+  font-family: sans-serif;
   padding: 0;
 }
 
@@ -109,11 +108,13 @@ p > .hero-btn {
 
 .email-btn {
   margin-top: 1rem;
-  background-color: $main-color;
-  border: 1px solid $main-color;
+  background-color: yellowgreen;
+  border: 1px solid yellowgreen;
   color: $text-color;
   padding: 0.5rem 1.5rem;
+  font-family: sans-serif;
   font-size: 2rem;
+  color: $dark-color;
 
   &:hover {
     background-color: $dark-color;
@@ -185,20 +186,6 @@ p > .hero-btn {
   padding: 0.5rem 0;
 }
 
-.nav-link.about-paypal {
-  font-size: 5rem;
-  color: $main-color;
-  width: 15%;
-  margin: 0.5rem auto;
-  padding: 0;
-
-  &:hover {
-    border: none;
-    padding: 0;
-    color: $highlight-color;
-  }
-}
-
 /* FOOTER */
 
 footer {
@@ -216,13 +203,21 @@ footer {
 .social-media {
   font-size: 2rem;
   margin: 1rem 0.5rem;
+  color: $text-color;
 
   &:hover {
-    color: $dark-color;
+    color: $highlight-color;
+    text-decoration: none;
   }
 }
 
 /* MEDIA QUERIES */
+
+@media screen and (max-height: 800px) {
+  .hero-text > p {
+    display: none;
+  }
+}
 
 @media screen and (max-width: 1000px) {
   .form {
@@ -241,6 +236,22 @@ footer {
   }
 }
 
+@media screen and (max-width: 965px) {
+  .album-img {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .album-img {
+    width: 100px;
+  }
+
+  .hero-text > p {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 725px) {
   .hero {
     text-align: center;
@@ -255,10 +266,6 @@ footer {
 }
 
 @media screen and (max-width: 545px) {
-  .logo > h1 {
-    font-size: 3rem;
-  }
-
   .email {
     font-size: 20px;
 
