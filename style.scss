@@ -31,6 +31,11 @@ p {
 
 /* HEADER */
 
+.header {
+  position: relative;
+  z-index: 3;
+}
+
 .main-nav {
   padding: 0;
   background-color: $dark-color;
@@ -64,13 +69,17 @@ p {
 
 /* HERO */
 
+.hero {
+  position: relative;
+}
+
 .hero-images {
   height: 70vh;
 }
 
 .hero-text {
   position: absolute;
-  z-index: 9999;
+  z-index: 2;
   text-align: center;
   margin: 0;
   padding: 0;
