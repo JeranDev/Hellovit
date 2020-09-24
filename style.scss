@@ -29,6 +29,15 @@ p {
   margin-bottom: 0.5rem;
 }
 
+.section-header {
+  font-family: $main-font;
+  font-size: 3.5rem;
+  color: $dark-color;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  text-decoration: underline;
+}
+
 /* HEADER */
 
 .header {
@@ -130,7 +139,7 @@ p {
   border: 1px solid yellowgreen;
   color: $text-color;
   font-family: sans-serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: $dark-color;
 
   &:hover {
@@ -167,6 +176,78 @@ tr {
   text-align: center;
 }
 
+/* CART */
+
+.cart-section {
+  font-family: sans-serif;
+}
+
+.cart-header {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.cart-items {
+  box-sizing: border-box;
+}
+
+.cart-column {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid black;
+
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.cart-row {
+  display: flex;
+}
+
+.cart-item {
+  width: 45%;
+}
+
+.cart-price {
+  width: 20%;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.cart-quantity {
+  width: 35%;
+}
+
+.cart-quantity-input {
+  width: 50%;
+}
+
+.cart-item-title {
+  color: #333;
+  margin-left: 0.5em;
+  font-size: 1.2em;
+}
+
+.cart-item-image {
+  width: 75px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.cart-total {
+  text-align: end;
+  margin-top: 10px;
+  margin-right: 10px;
+  color: $dark-color;
+}
+
+.btn-purchase {
+  display: block;
+  margin: 2rem auto;
+  font-size: 1.5rem;
+}
+
 /* ARTISTS */
 
 .artists-title {
@@ -192,6 +273,10 @@ tr {
   color: $dark-color;
   font-family: sans-serif;
   margin: 0.5rem;
+}
+
+.artists-card {
+  padding: 0;
 }
 
 .card-img-top {
