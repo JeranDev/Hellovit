@@ -211,7 +211,6 @@ tr {
 
 .cart-price {
   width: 20%;
-  font-size: 1.2em;
   color: #333;
 }
 
@@ -424,6 +423,28 @@ footer {
   .about {
     width: 100%;
   }
+
+  .cart-column {
+    margin-right: 5px;
+  }
+
+  .cart-header {
+    font-size: 1rem;
+  }
+
+  .cart-item-title {
+    font-size: 1rem;
+  }
+
+  .cart-quantity-input {
+    width: 45%;
+  }
+
+  .btn-remove {
+    font-size: .7rem;
+  }
+
+
 }
 
 @media screen and (max-width: 545px) {
