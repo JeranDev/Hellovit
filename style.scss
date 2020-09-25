@@ -250,6 +250,7 @@ tr {
 /* ARTISTS */
 
 .artists-title {
+  color: $dark-color;
   text-align: center;
   font-size: 4rem;
   margin: 1rem;
@@ -257,8 +258,7 @@ tr {
 }
 
 .card-deck-container {
-  background-color: $dark-color;
-  padding: 2rem;
+  padding: 2rem 4rem;
   margin: 4rem auto;
 }
 
@@ -424,6 +424,10 @@ footer {
     width: 100%;
   }
 
+  .card-deck-container {
+    padding: 2rem;
+  }
+
   .cart-column {
     margin-right: 5px;
   }
@@ -441,10 +445,8 @@ footer {
   }
 
   .btn-remove {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
-
-
 }
 
 @media screen and (max-width: 545px) {
