@@ -1,0 +1,28 @@
+{
+  "merch": [
+    {
+      "id": 1,
+      "name": "Album",
+      "price": 1999,
+      "imgName": "AlbumCoverResize.png"
+    },
+    {
+      "id": 2,
+      "name": "Awesome Product",
+      "price": 1099,
+      "imgName": "Hellovit Hand Logo Blue.png"
+    },
+    {
+      "id": 3,
+      "name": "Cool Product",
+      "price": 1199,
+      "imgName": "Hellovit Hand Logo Green.png"
+    },
+    {
+      "id": 4,
+      "name": "Album",
+      "price": 999,
+      "imgName": "Hellovit Hand Logo Red.png"
+    }
+  ]
+}
