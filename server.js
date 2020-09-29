@@ -14,6 +14,26 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
 
+app.get('/', (req, res) => {
+  res.render('index', {})
+})
+
+app.get('/shows', (req, res) => {
+  res.render('shows', {})
+})
+
+app.get('/artists', (req, res) => {
+  res.render('artists', {})
+})
+
+app.get('/contact', (req, res) => {
+  res.render('contact', {})
+})
+
+app.get('/about', (req, res) => {
+  res.render('about', {})
+})
+
 app.get('/merch', (req, res) => {
   fs.readFile('items.json', (err, data) => {
     if (err) {
