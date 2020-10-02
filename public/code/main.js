@@ -15,7 +15,7 @@ function ready() {
     .addEventListener('click', purchaseClicked)
 }
 
-var stripeHandler = StripeCheckout.configure({
+const stripeHandler = StripeCheckout.configure({
   key: stripePublicKey,
   locale: 'auto',
   token: (token) => {
@@ -101,7 +101,7 @@ function addItemToCart(title, price, imgSrc, id) {
   cartRow.dataset.itemId = id
   const cartItems = document.querySelector('.cart-items')
   const cartItemNames = cartItems.querySelectorAll('.cart-item-title')
-  for (var i = 0; i < cartItemNames.length; i++) {
+  for (let i = 0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText == title) {
       alert('This item is already added to the cart')
       return

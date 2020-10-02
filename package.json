@@ -1,5 +1,5 @@
 {
-  "name": "Hellovit",
+  "name": "hellovit",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -20,6 +20,7 @@
   "dependencies": {
     "ejs": "^3.1.5",
     "express": "^4.17.1",
+    "mongoose": "^5.10.7",
     "stripe": "^8.102.0"
   },
   "devDependencies": {

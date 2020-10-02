@@ -8,11 +8,22 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 const express = require('express')
 const app = express()
 const fs = require('fs')
+const mongoose = require('mongoose')
 const stripe = require('stripe')(stripeSecretKey)
 
 app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
+
+mongoose.connect('mongodb://localhost:27017/hellovitDB', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+const Items = mongoose.model('Items', {
+  name: String,
+  price: Number,
+  imgName: String,
+})
 
 app.get('/', (req, res) => {
   res.render('index', {})
@@ -35,33 +46,31 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/merch', (req, res) => {
-  fs.readFile('items.json', (err, data) => {
+  Items.find({}, (err, results) => {
     if (err) {
+      console.log(err)
       res.status(500).end()
     } else {
-      res.render('merch.ejs', {
+      res.render('merch', {
         stripePublicKey: stripePublicKey,
-        items: JSON.parse(data),
+        items: results,
       })
     }
   })
 })
 
 app.post('/purchase', (req, res) => {
-  fs.readFile('items.json', (err, data) => {
+  Items.find({}, (err, results) => {
     if (err) {
       res.status(500).end()
     } else {
-      const itemsJson = JSON.parse(data)
-      const itemsArray = itemsJson.merch.concat()
       let total = 0
       req.body.items.forEach((item) => {
-        const itemJson = itemsArray.find((i) => {
+        const result = results.find((i) => {
           return i.id == item.id
         })
-        total = total + itemJson.price * item.quantity
+        total = total + result.price * item.quantity
       })
-
       stripe.charges
         .create({
           amount: total,
