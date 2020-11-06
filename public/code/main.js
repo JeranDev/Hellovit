@@ -6,7 +6,7 @@ if (document.readyState == 'loading') {
 
 function ready() {
   const addToCartBtns = document.querySelectorAll('.shop-item-button')
-  addToCartBtns.forEach((button) => {
+  addToCartBtns.forEach(button => {
     button.addEventListener('click', addToCartClicked)
   })
 
@@ -18,12 +18,12 @@ function ready() {
 const stripeHandler = StripeCheckout.configure({
   key: stripePublicKey,
   locale: 'auto',
-  token: (token) => {
+  token: token => {
     const items = []
     const cartItemContainer = document.querySelector('.cart-items')
     const cartRows = cartItemContainer.querySelectorAll('.cart-row')
 
-    cartRows.forEach((row) => {
+    cartRows.forEach(row => {
       const quantityElement = row.querySelector('.cart-quantity-input')
       const quantity = quantityElement.value
       const id = row.dataset.itemId
@@ -44,10 +44,10 @@ const stripeHandler = StripeCheckout.configure({
         items: items,
       }),
     })
-      .then((res) => {
+      .then(res => {
         return res.json()
       })
-      .then((data) => {
+      .then(data => {
         alert(data.message)
         const cartItems = document.querySelector('.cart-items')
         while (cartItems.hasChildNodes()) {
@@ -55,7 +55,7 @@ const stripeHandler = StripeCheckout.configure({
         }
         updateCartTotal()
       })
-      .catch((err) => {
+      .catch(err => {
         console.error(err)
       })
   },
@@ -134,7 +134,7 @@ function updateCartTotal() {
   const cartItemContainer = document.querySelector('.cart-items')
   const cartRows = cartItemContainer.querySelectorAll('.cart-row')
   let total = 0
-  cartRows.forEach((row) => {
+  cartRows.forEach(row => {
     const priceElement = row.querySelector('.cart-price')
     const quantityElement = row.querySelector('.cart-quantity-input')
     const price = parseFloat(priceElement.innerText.replace('$', ''))

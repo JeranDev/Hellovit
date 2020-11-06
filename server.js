@@ -15,7 +15,7 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
 
-mongoose.connect('mongodb://localhost:27017/hellovitDB', {
+mongoose.connect(process.env.MONGO_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
