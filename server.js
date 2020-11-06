@@ -65,8 +65,8 @@ app.post('/purchase', (req, res) => {
       res.status(500).end()
     } else {
       let total = 0
-      req.body.items.forEach((item) => {
-        const result = results.find((i) => {
+      req.body.items.forEach(item => {
+        const result = results.find(i => {
           return i.id == item.id
         })
         total = total + result.price * item.quantity
@@ -81,7 +81,7 @@ app.post('/purchase', (req, res) => {
           console.log('Charge Successful')
           res.json({ message: 'Successfully Purchased Items!' })
         })
-        .catch((err) => {
+        .catch(err => {
           console.log('Charge Failed!')
           console.log(err)
           res.status(500).end()
@@ -90,4 +90,6 @@ app.post('/purchase', (req, res) => {
   })
 })
 
-app.listen(3000)
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => console.log(`Listening on ${PORT}`))
