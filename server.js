@@ -9,7 +9,6 @@ const express = require('express')
 const app = express()
 const fs = require('fs')
 const mongoose = require('mongoose')
-const stripe = require('stripe')(stripeSecretKey)
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -23,6 +22,7 @@ const Items = mongoose.model('Items', {
   name: String,
   price: Number,
   imgName: String,
+  stripeId: String,
 })
 
 app.get('/', (req, res) => {
@@ -55,37 +55,6 @@ app.get('/merch', (req, res) => {
         stripePublicKey: stripePublicKey,
         items: results,
       })
-    }
-  })
-})
-
-app.post('/purchase', (req, res) => {
-  Items.find({}, (err, results) => {
-    if (err) {
-      res.status(500).end()
-    } else {
-      let total = 0
-      req.body.items.forEach(item => {
-        const result = results.find(i => {
-          return i.id == item.id
-        })
-        total = total + result.price * item.quantity
-      })
-      stripe.charges
-        .create({
-          amount: total,
-          source: req.body.stripeTokenId,
-          currency: 'usd',
-        })
-        .then(() => {
-          console.log('Charge Successful')
-          res.json({ message: 'Successfully Purchased Items!' })
-        })
-        .catch(err => {
-          console.log('Charge Failed!')
-          console.log(err)
-          res.status(500).end()
-        })
     }
   })
 })

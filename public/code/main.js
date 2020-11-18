@@ -4,69 +4,62 @@ if (document.readyState == 'loading') {
   ready()
 }
 
+const stripe = Stripe(stripePublicKey)
+
 function ready() {
   const addToCartBtns = document.querySelectorAll('.shop-item-button')
   addToCartBtns.forEach(button => {
     button.addEventListener('click', addToCartClicked)
   })
-
   document
     .querySelector('.btn-purchase')
     .addEventListener('click', purchaseClicked)
 }
 
-const stripeHandler = StripeCheckout.configure({
-  key: stripePublicKey,
-  locale: 'auto',
-  token: token => {
-    const items = []
-    const cartItemContainer = document.querySelector('.cart-items')
-    const cartRows = cartItemContainer.querySelectorAll('.cart-row')
+function stripeHandler(price) {
+  const items = []
+  const cartItemContainer = document.querySelector('.cart-items')
+  const cartRows = cartItemContainer.querySelectorAll('.cart-row')
 
-    cartRows.forEach(row => {
-      const quantityElement = row.querySelector('.cart-quantity-input')
-      const quantity = quantityElement.value
-      const id = row.dataset.itemId
-      items.push({
-        id: id,
-        quantity: quantity,
-      })
+  cartRows.forEach(row => {
+    const quantityElement = row.querySelector('.cart-quantity-input')
+    const quantity = quantityElement.value
+    const id = row.dataset.itemId
+    items.push({
+      price: id,
+      quantity: Number(quantity),
     })
+  })
 
-    fetch('/purchase', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify({
-        stripeTokenId: token.id,
-        items: items,
-      }),
+  stripe
+    .redirectToCheckout({
+      lineItems: items,
+      mode: 'payment',
+      // Do not rely on the redirect to the successUrl for fulfilling
+      // purchases, customers may not always reach the success_url after
+      // a successful payment.
+      // Instead use one of the strategies described in
+      // https://stripe.com/docs/payments/checkout/fulfill-orders
+      successUrl: window.location.protocol + '//localhost:5000/success',
+      cancelUrl: window.location.protocol + '//localhost:5000/merch',
     })
-      .then(res => {
-        return res.json()
-      })
-      .then(data => {
-        alert(data.message)
-        const cartItems = document.querySelector('.cart-items')
-        while (cartItems.hasChildNodes()) {
-          cartItems.removeChild(cartItems.firstChild)
-        }
-        updateCartTotal()
-      })
-      .catch(err => {
-        console.error(err)
-      })
-  },
-})
+    .then(function (result) {
+      if (result.error) {
+        // If `redirectToCheckout` fails due to a browser or network
+        // error, display the localized error message to your customer.
+        var displayError = document.getElementById('error-message')
+        displayError.textContent = result.error.message
+      }
+    })
+}
 
 function purchaseClicked() {
   const priceElement = document.querySelector('.cart-total-price')
   const price = parseFloat(priceElement.innerText.replace('$', '')) * 100
-  stripeHandler.open({
-    amount: price,
-  })
+  // stripeHandler.open({
+  //   amount: price,
+  // })
+  stripeHandler(price)
 }
 
 function removeCartItem(event) {
@@ -90,7 +83,6 @@ function addToCartClicked(event) {
   const price = shopItem.querySelector('.shop-item-price').innerText
   const imgSrc = shopItem.querySelector('.shop-item-image').src
   const id = shopItem.dataset.itemId
-  console.log(title, price, imgSrc)
   addItemToCart(title, price, imgSrc, id)
   updateCartTotal()
 }

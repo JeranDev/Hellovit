@@ -1,4 +1,5 @@
 <%- include('partials/header') -%>
+<script src="https://js.stripe.com/v3"></script>
 <!-- MERCH -->
 <div class="container mt-5">
   <div class="row pb-5 mb-4">
@@ -6,7 +7,7 @@
     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
       <div
         class="card rounded shadow-sm border-0"
-        data-item-id="<%= item._id %>"
+        data-item-id="<%= item.stripeId %>"
       >
         <div class="card-body p-4">
           <img
@@ -47,5 +48,4 @@
 <script>
   const stripePublicKey = '<%= stripePublicKey %>'
 </script>
-<script src="https://checkout.stripe.com/checkout.js" defer></script>
 <%- include('partials/footer') -%>
