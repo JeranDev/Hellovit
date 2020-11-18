@@ -40,8 +40,12 @@ function stripeHandler(price) {
       // a successful payment.
       // Instead use one of the strategies described in
       // https://stripe.com/docs/payments/checkout/fulfill-orders
-      successUrl: window.location.protocol + '//localhost:5000/success',
-      cancelUrl: window.location.protocol + '//localhost:5000/merch',
+      successUrl:
+        window.location.protocol +
+        'https://fathomless-temple-81469.herokuapp.com/success',
+      cancelUrl:
+        window.location.protocol +
+        'https://fathomless-temple-81469.herokuapp.com/merch',
     })
     .then(function (result) {
       if (result.error) {
