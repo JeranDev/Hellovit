@@ -42,10 +42,10 @@ function stripeHandler(price) {
       // https://stripe.com/docs/payments/checkout/fulfill-orders
       successUrl:
         window.location.protocol +
-        'https://fathomless-temple-81469.herokuapp.com/success',
+        '//fathomless-temple-81469.herokuapp.com/success',
       cancelUrl:
         window.location.protocol +
-        'https://fathomless-temple-81469.herokuapp.com/merch',
+        '//fathomless-temple-81469.herokuapp.com/merch',
     })
     .then(function (result) {
       if (result.error) {
