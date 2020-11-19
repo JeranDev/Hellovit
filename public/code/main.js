@@ -45,7 +45,7 @@ function stripeHandler(price) {
         '//fathomless-temple-81469.herokuapp.com/success',
       cancelUrl:
         window.location.protocol +
-        '//fathomless-temple-81469.herokuapp.com/merch',
+        '//fathomless-temple-81469.herokuapp.com/store',
     })
     .then(function (result) {
       if (result.error) {
