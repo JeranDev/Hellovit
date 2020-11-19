@@ -21,6 +21,10 @@ body {
   color: $text-color;
 }
 
+.btn:focus {
+  box-shadow: none;
+}
+
 .container {
   flex: 1 0 auto;
 }
@@ -35,6 +39,16 @@ p {
   color: $dark-color;
   text-align: center;
   margin-bottom: 2.5rem;
+  text-decoration: underline;
+}
+
+.page-title {
+  font-family: $main-font;
+  color: $dark-color;
+  text-align: center;
+  font-size: 4rem;
+  margin: 1rem;
+  padding-bottom: 1rem;
   text-decoration: underline;
 }
 
@@ -84,6 +98,7 @@ p {
 
 .hero-images {
   height: 70vh;
+  object-fit: cover;
 }
 
 .hero-text {
@@ -153,7 +168,7 @@ p {
 
 input#email {
   font-family: 'Roboto', sans-serif;
-  font-size: 0.8rem;
+  font-size: 1.5rem;
 }
 
 /* SHOWS */
@@ -177,7 +192,11 @@ tr {
   text-align: center;
 }
 
-/* CART */
+/* STORE */
+
+.store-container {
+  margin-top: 4rem;
+}
 
 .cart-section {
   font-family: 'Roboto', sans-serif;
@@ -251,14 +270,6 @@ tr {
 
 /* ARTISTS */
 
-.artists-title {
-  color: $dark-color;
-  text-align: center;
-  font-size: 4rem;
-  margin: 1rem;
-  text-decoration: underline;
-}
-
 .card-deck-container {
   padding: 0 4rem 12rem 4rem;
   margin: 4rem auto;
@@ -307,12 +318,8 @@ tr {
 .contact-form input,
 .contact-form textarea {
   border: 2px solid $dark-color;
-}
-
-.contact-header {
-  font-size: 4rem;
-  margin-bottom: 2rem;
-  text-decoration: underline;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
 }
 
 .contact-text {
@@ -334,11 +341,6 @@ tr {
   text-align: center;
   padding: 0 3rem 12rem 3rem;
   text-align: center;
-}
-
-.about-header {
-  font-size: 4rem;
-  text-decoration: underline;
 }
 
 .about-container {
@@ -411,7 +413,40 @@ footer {
   }
 
   .hero-text {
-    top: 40%;
+    top: 20%;
+  }
+
+  .social-media {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .footer-h3 {
+    font-size: 1.5rem;
+  }
+
+  .shows-container {
+    margin: 2rem auto;
+  }
+
+  .store-container {
+    margin-top: 2rem;
+  }
+
+  .card-deck-container {
+    margin: 0 auto;
+  }
+
+  .form {
+    margin: 2rem auto;
+  }
+
+  .about {
+    margin: 2rem auto;
+  }
+
+  .cart-row {
+    padding: 0.5rem;
   }
 }
 
@@ -506,5 +541,38 @@ footer {
     top: 15%;
     left: 0;
     right: 0;
+  }
+
+  .social-media {
+    font-size: 1.5rem;
+    margin: 0.5rem;
+  }
+
+  .footer-h3 {
+    font-size: 1.5rem;
+  }
+
+  .shows-container {
+    margin: 2rem auto;
+  }
+
+  .store-container {
+    margin-top: 2rem;
+  }
+
+  .card-deck-container {
+    margin: 0 auto;
+  }
+
+  .form {
+    margin: 2rem auto;
+  }
+
+  .about {
+    margin: 2rem auto;
+  }
+
+  .cart-row {
+    padding: 0.5rem;
   }
 }

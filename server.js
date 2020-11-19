@@ -45,13 +45,13 @@ app.get('/about', (req, res) => {
   res.render('about', {})
 })
 
-app.get('/merch', (req, res) => {
+app.get('/store', (req, res) => {
   Items.find({}, (err, results) => {
     if (err) {
       console.log(err)
       res.status(500).end()
     } else {
-      res.render('merch', {
+      res.render('store', {
         stripePublicKey: stripePublicKey,
         items: results,
       })

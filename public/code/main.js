@@ -140,8 +140,3 @@ function updateCartTotal() {
   total = Math.round(total * 100) / 100
   document.querySelector('.cart-total-price').innerText = '$' + total
 }
-
-$('.carousel').carousel({
-  interval: 3000,
-  pause: false,
-})
