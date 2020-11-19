@@ -169,6 +169,10 @@ p {
 input#email {
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
+  &:focus {
+    border-color: $highlight-color;
+    box-shadow: 1px 2px $dark-color;
+  }
 }
 
 /* SHOWS */
@@ -320,6 +324,10 @@ tr {
   border: 2px solid $dark-color;
   font-family: 'Roboto', sans-serif;
   font-size: 1.5rem;
+  &:focus {
+    border-color: $highlight-color;
+    box-shadow: 1px 2px $dark-color;
+  }
 }
 
 .contact-text {
