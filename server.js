@@ -91,7 +91,7 @@ app.post('/form', (req, res) => {
         if (!error) {
           res.render('sent', {})
         } else {
-          res.write(<h1>{error}</h1>)
+          res.write(error)
           res.end()
         }
       }
