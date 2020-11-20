@@ -69,28 +69,30 @@ app.get('/success', (req, res) => {
 app.post('/form', (req, res) => {
   async function main() {
     let transporter = nodemailer.createTransport({
-      host: 'smtp-mail.outlook.com',
-      port: 587,
-      secure: false,
+      host: 'smtp.gmail.com',
+      port: 465,
+      secure: true,
       auth: {
         user: process.env.JERANDEV_EMAIL,
         pass: process.env.JERANDEV_PASSWORD,
       },
-      tls: {
-        ciphers: 'SSLv3',
+    })
+
+    let info = await transporter.sendMail(
+      {
+        from: 'jeranjb@gmail.com ' + req.body.email,
+        // from: `"${req.body.name}" <${req.body.email}>`,
+        to: 'jerandev@outlook.com',
+        subject: 'Hellovit Form Submission',
+        text: req.body.message,
+        html: `<b>${req.body.message}</b>`,
       },
-    })
-
-    let info = await transporter.sendMail({
-      from: 'jerandev@outlook.com ' + req.body.email,
-      // from: `"${req.body.name}" <${req.body.email}>`,
-      to: 'jerandev@outlook.com',
-      subject: 'Hellovit Form Submission',
-      text: req.body.message,
-      html: `<b>${req.body.message}</b>`,
-    })
-
-    console.log('Message sent: %s', info.messageId)
+      error => {
+        if (!error) {
+          res.render('sent', {})
+        }
+      }
+    )
   }
   main().catch(console.error)
 })
