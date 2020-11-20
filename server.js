@@ -90,11 +90,14 @@ app.post('/form', (req, res) => {
       error => {
         if (!error) {
           res.render('sent', {})
+        } else {
+          res.write(<h1>{error}</h1>)
+          res.end()
         }
       }
     )
   }
-  main().catch(console.error)
+  main().catch()
 })
 
 const PORT = process.env.PORT || 5000
