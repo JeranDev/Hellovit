@@ -113,7 +113,7 @@ p {
 }
 
 .email-btn.hero-btn {
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 /* CTA */
@@ -269,7 +269,6 @@ tr {
 .btn-purchase {
   display: block;
   margin: 2rem auto;
-  font-size: 1.5rem;
 }
 
 /* ARTISTS */
@@ -336,8 +335,8 @@ tr {
 }
 
 .contact-btn {
-  padding: 1rem 2rem;
-  margin: 0;
+  display: block;
+  margin: 0 auto;
 }
 
 /* ABOUT */
@@ -357,7 +356,7 @@ tr {
 
 .about-subheader {
   font-size: 3rem;
-  text-decoration: underline;
+  padding-top: 1.5rem;
 }
 
 .about-image {
@@ -518,10 +517,6 @@ footer {
     &:placeholder-shown {
       font-size: 20px;
     }
-  }
-
-  #email-submit {
-    font-size: 1.5rem;
   }
 
   .call-to-action {
