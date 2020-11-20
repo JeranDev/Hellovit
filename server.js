@@ -67,37 +67,33 @@ app.get('/success', (req, res) => {
 })
 
 app.post('/form', (req, res) => {
-  async function main() {
-    let transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.JERANDEV_EMAIL,
-        pass: process.env.JERANDEV_PASSWORD,
-      },
-    })
+  let transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: process.env.JERANDEV_EMAIL,
+      pass: process.env.JERANDEV_PASSWORD,
+    },
+  })
 
-    let info = await transporter.sendMail(
-      {
-        from: 'jeranjb@gmail.com ' + req.body.email,
-        // from: `"${req.body.name}" <${req.body.email}>`,
-        to: 'jerandev@outlook.com',
-        subject: 'Hellovit Form Submission',
-        text: req.body.message,
-        html: `<b>${req.body.message}</b>`,
-      },
-      error => {
-        if (!error) {
-          res.render('sent', {})
-        } else {
-          res.write(error)
-          res.end()
-        }
+  transporter.sendMail(
+    {
+      from: 'jeranjb@gmail.com ' + req.body.email,
+      // from: `"${req.body.name}" <${req.body.email}>`,
+      to: 'jerandev@outlook.com',
+      subject: 'Hellovit Form Submission',
+      text: req.body.message,
+      html: `<b>${req.body.message}</b>`,
+    },
+    error => {
+      if (error) {
+        res.render('error', { error: error })
+      } else {
+        res.render('sent', {})
       }
-    )
-  }
-  main().catch()
+    }
+  )
 })
 
 const PORT = process.env.PORT || 5000
