@@ -79,8 +79,8 @@ app.post('/form', (req, res) => {
 
   transporter.sendMail(
     {
-      from: 'jeranjb@gmail.com ' + req.body.email,
-      // from: `"${req.body.name}" <${req.body.email}>`,
+      // from: 'jeranjb@gmail.com ' + req.body.email,
+      from: `"${req.body.name}" <${req.body.email}>`,
       to: 'jerandev@outlook.com',
       subject: 'Hellovit Form Submission',
       text: req.body.message,
