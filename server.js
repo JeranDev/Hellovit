@@ -16,7 +16,6 @@ app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 mongoose.connect(process.env.MONGO_CONNECTION, {
   useNewUrlParser: true,
@@ -70,20 +69,24 @@ app.get('/success', (req, res) => {
 
 app.post('/form', (req, res) => {
   let transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.outlook.com',
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.JERANDEV_EMAIL,
       pass: process.env.JERANDEV_PASSWORD,
     },
   })
-
   transporter.sendMail(
     {
-      // from: 'jeranjb@gmail.com ' + req.body.email,
-      from: `"${req.body.name}" <${req.body.email}>`,
+      from: `"jerandev@outlook.com"`,
       to: 'jerandev@outlook.com',
       subject: 'Hellovit Form Submission',
-      html: `<p>${req.body.message}</p>`,
+      html: `
+      <h2>${req.body.name}<h1>
+      <h3>${req.body.email}
+      <p>${req.body.message}</p>
+      `,
     },
     error => {
       if (error) {
