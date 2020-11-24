@@ -69,9 +69,8 @@ app.get('/success', (req, res) => {
 
 app.post('/form', (req, res) => {
   let transporter = nodemailer.createTransport({
-    host: 'smtp.outlook.com',
+    host: 'smtp.office365.com',
     port: 587,
-    secure: false,
     auth: {
       user: process.env.JERANDEV_EMAIL,
       pass: process.env.JERANDEV_PASSWORD,
@@ -79,7 +78,7 @@ app.post('/form', (req, res) => {
   })
   transporter.sendMail(
     {
-      from: `"jerandev@outlook.com"`,
+      from: 'jerandev@outlook.com',
       to: 'jerandev@outlook.com',
       subject: 'Hellovit Form Submission',
       html: `
