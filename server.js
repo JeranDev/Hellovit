@@ -11,8 +11,6 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
-const passport = require('passport')
-const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -31,21 +29,6 @@ const Items = mongoose.model('Items', {
   imgName: String,
   stripeId: String,
 })
-
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:5000/auth/google/callback',
-    },
-    (accessToken, refreshToken, profile, cb) => {
-      User.findOrCreate({ googleId: profile.id }, function (err, user) {
-        return cb(err, user)
-      })
-    }
-  )
-)
 
 app.get('/', (req, res) => {
   res.render('index', {})
@@ -84,17 +67,6 @@ app.get('/store', (req, res) => {
 app.get('/success', (req, res) => {
   res.render('success', {})
 })
-
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }))
-
-app.get(
-  '/auth/google/callback',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function (req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('/')
-  }
-)
 
 app.post('/form', (req, res) => {
   let transporter = nodemailer.createTransport({
