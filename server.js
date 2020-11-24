@@ -75,6 +75,9 @@ app.post('/form', (req, res) => {
       user: process.env.JERANDEV_EMAIL,
       pass: process.env.JERANDEV_PASSWORD,
     },
+    tls: {
+      requireTLS: true,
+    },
   })
   transporter.sendMail(
     {
