@@ -11,22 +11,41 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
+const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
 
 app.set('view engine', 'ejs')
 app.use(express.json())
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 mongoose.connect(process.env.MONGO_CONNECTION, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
+
 const Items = mongoose.model('Items', {
   name: String,
   price: Number,
   imgName: String,
   stripeId: String,
 })
+
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: 'http://localhost:5000/auth/google/callback',
+    },
+    (accessToken, refreshToken, profile, cb) => {
+      User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        return cb(err, user)
+      })
+    }
+  )
+)
 
 app.get('/', (req, res) => {
   res.render('index', {})
@@ -66,11 +85,20 @@ app.get('/success', (req, res) => {
   res.render('success', {})
 })
 
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile'] }))
+
+app.get(
+  '/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/')
+  }
+)
+
 app.post('/form', (req, res) => {
   let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
+    service: 'gmail',
     auth: {
       user: process.env.JERANDEV_EMAIL,
       pass: process.env.JERANDEV_PASSWORD,
@@ -83,8 +111,7 @@ app.post('/form', (req, res) => {
       from: `"${req.body.name}" <${req.body.email}>`,
       to: 'jerandev@outlook.com',
       subject: 'Hellovit Form Submission',
-      text: req.body.message,
-      html: `<b>${req.body.message}</b>`,
+      html: `<p>${req.body.message}</p>`,
     },
     error => {
       if (error) {
