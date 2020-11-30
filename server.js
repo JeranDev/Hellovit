@@ -11,6 +11,7 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
+const stripe = require('stripe')(stripeSecretKey)
 
 app.set('view engine', 'ejs')
 app.use(express.json())
@@ -29,6 +30,11 @@ const Items = mongoose.model('Items', {
   stripeId: String,
   quantity: Number,
 })
+
+const fulfillOrder = session => {
+  // TODO: fill me in
+  console.log('Fulfilling order', session)
+}
 
 app.get('/', (req, res) => {
   res.render('index', {})
@@ -67,6 +73,32 @@ app.get('/store', (req, res) => {
 app.get('/success', (req, res) => {
   res.render('success', {})
 })
+
+app.post(
+  '/webhook',
+  bodyParser.raw({ type: 'application/json' }),
+  (request, response) => {
+    const payload = request.body
+    const sig = request.headers['stripe-signature']
+    let event
+
+    try {
+      event = stripe.webhooks.constructEvent(payload, sig, endpointSecret)
+    } catch (err) {
+      return response.status(400).send(`Webhook Error: ${err.message}`)
+    }
+
+    // Handle the checkout.session.completed event
+    if (event.type === 'checkout.session.completed') {
+      const session = event.data.object
+
+      // Fulfill the purchase...
+      fulfillOrder(session)
+    }
+
+    response.status(200)
+  }
+)
 
 app.post('/form', (req, res) => {
   let transporter = nodemailer.createTransport({
