@@ -22,7 +22,11 @@
             Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           </p>
           <small class="shop-item-price">$<%= item.price / 100 %></small><br />
-          <btn class="btn btn-warning mt-3 shop-item-button">Add To Cart</btn>
+          <% if (item.quantity === 0) { %>
+            <button class="btn btn-warning mt-3 shop-item-button" disabled>Out Of Stock</> 
+          <% } else { %>
+            <button class="btn btn-warning mt-3 shop-item-button">Add To Cart</button>
+          <% } %>
         </div>
       </div>
     </div>

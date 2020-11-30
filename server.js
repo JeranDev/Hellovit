@@ -27,6 +27,7 @@ const Items = mongoose.model('Items', {
   price: Number,
   imgName: String,
   stripeId: String,
+  quantity: Number,
 })
 
 app.get('/', (req, res) => {

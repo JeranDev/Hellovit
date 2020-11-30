@@ -49,9 +49,7 @@ function stripeHandler(price) {
     })
     .then(function (result) {
       if (result.error) {
-        // If `redirectToCheckout` fails due to a browser or network
-        // error, display the localized error message to your customer.
-        var displayError = document.getElementById('error-message')
+        const displayError = document.getElementById('error-message')
         displayError.textContent = result.error.message
       }
     })
@@ -60,9 +58,6 @@ function stripeHandler(price) {
 function purchaseClicked() {
   const priceElement = document.querySelector('.cart-total-price')
   const price = parseFloat(priceElement.innerText.replace('$', '')) * 100
-  // stripeHandler.open({
-  //   amount: price,
-  // })
   stripeHandler(price)
 }
 
