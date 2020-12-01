@@ -16,7 +16,7 @@ function ready() {
     .addEventListener('click', purchaseClicked)
 }
 
-function stripeHandler(price) {
+function stripeHandler() {
   const items = []
   const cartItemContainer = document.querySelector('.cart-items')
   const cartRows = cartItemContainer.querySelectorAll('.cart-row')
@@ -35,11 +35,6 @@ function stripeHandler(price) {
     .redirectToCheckout({
       lineItems: items,
       mode: 'payment',
-      // Do not rely on the redirect to the successUrl for fulfilling
-      // purchases, customers may not always reach the success_url after
-      // a successful payment.
-      // Instead use one of the strategies described in
-      // https://stripe.com/docs/payments/checkout/fulfill-orders
       successUrl:
         window.location.protocol +
         '//fathomless-temple-81469.herokuapp.com/success',
