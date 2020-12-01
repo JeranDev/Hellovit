@@ -11,6 +11,7 @@ const fs = require('fs')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
+const mailchimp = require('@mailchimp/mailchimp_marketing')
 const stripe = require('stripe')(stripeSecretKey)
 
 app.set('view engine', 'ejs')
@@ -29,6 +30,11 @@ const Items = mongoose.model('Items', {
   imgName: String,
   stripeId: String,
   inStock: Boolean,
+})
+
+mailchimp.setConfig({
+  apiKey: process.env.MAILCHIMP_API_KEY,
+  server: process.env.MAILCHIMP_SERVER_PREFIX,
 })
 
 app.get('/', (req, res) => {
@@ -67,6 +73,21 @@ app.get('/store', (req, res) => {
 
 app.get('/success', (req, res) => {
   res.render('success', {})
+})
+
+app.post('/subscribe', async (req, res) => {
+  try {
+    const response = await mailchimp.lists.addListMember(
+      process.env.MAILCHIMP_AUDIENCE_ID,
+      {
+        email_address: req.body.email,
+        status: 'subscribed',
+      }
+    )
+    res.render('emailSuccess', {})
+  } catch {
+    res.render('emailError', {})
+  }
 })
 
 app.post('/form', (req, res) => {
