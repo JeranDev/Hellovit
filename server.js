@@ -87,8 +87,8 @@ app.post('/form', (req, res) => {
       to: 'jerandev@outlook.com',
       subject: 'Hellovit Form Submission',
       html: `
-      <h2>${req.body.name}<h1>
-      <h3>${req.body.email}
+      <h2>${req.body.name}<h2>
+      <p>${req.body.email}<p>
       <p>${req.body.message}</p>
       `,
     },

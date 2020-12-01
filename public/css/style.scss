@@ -376,6 +376,9 @@ tr {
   background-color: $dark-color;
   .lead {
     font-family: 'Roboto', sans-serif;
+    a {
+      color: $highlight-color
+    }
   }
   .success-span {
     color: $highlight-color;
