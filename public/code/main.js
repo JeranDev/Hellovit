@@ -17,7 +17,7 @@ function ready() {
 }
 
 function stripeHandler() {
-  const items = []
+  const products = []
   const cartItemContainer = document.querySelector('.cart-items')
   const cartRows = cartItemContainer.querySelectorAll('.cart-row')
 
@@ -25,7 +25,7 @@ function stripeHandler() {
     const quantityElement = row.querySelector('.cart-quantity-input')
     const quantity = quantityElement.value
     const id = row.dataset.itemId
-    items.push({
+    products.push({
       price: id,
       quantity: Number(quantity),
     })
@@ -33,7 +33,7 @@ function stripeHandler() {
 
   stripe
     .redirectToCheckout({
-      lineItems: items,
+      lineItems: products,
       mode: 'payment',
       successUrl:
         window.location.protocol +
@@ -64,7 +64,7 @@ function removeCartItem(event) {
 
 function quantityChanged(event) {
   const input = event.target
-  if (isNaN(input.value) || input.value <= 0) {
+  if (isNaN(input.value) || input.value <= 0 || input.value > 5) {
     input.value = 1
   }
   updateCartTotal()

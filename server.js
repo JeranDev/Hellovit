@@ -24,10 +24,11 @@ mongoose.connect(process.env.MONGO_CONNECTION, {
   useUnifiedTopology: true,
 })
 
-const Items = mongoose.model('Items', {
+const Products = mongoose.model('Products', {
   name: String,
   price: Number,
   imgName: String,
+  description: String,
   stripeId: String,
   inStock: Boolean,
 })
@@ -58,14 +59,14 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/store', (req, res) => {
-  Items.find({}, (err, results) => {
+  Products.find({}, (err, results) => {
     if (err) {
       console.log(err)
       res.status(500).end()
     } else {
       res.render('store', {
         stripePublicKey: stripePublicKey,
-        items: results,
+        products: results,
       })
     }
   })

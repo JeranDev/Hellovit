@@ -1,28 +1,28 @@
 <%- include('partials/header') -%>
 <script src="https://js.stripe.com/v3"></script>
-<!-- STORE -->
 
+<!-- STORE -->
 <div class="container store-container">
   <h1 class="page-title">Store</h1>
   <div class="row pb-5 mb-4">
-    <% items.forEach((item) => { %>
+    <% products.forEach((product) => { %>
     <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
       <div
         class="card rounded shadow-sm border-0"
-        data-item-id="<%= item.stripeId %>"
+        data-item-id="<%= product.stripeId %>"
       >
         <div class="card-body p-4">
           <img
-            src="images/<%= item.imgName %>"
+            src="images/<%= product.imgName %>"
             alt=""
             class="img-fluid d-block mx-auto mb-3 shop-item-image"
           />
-          <h5 class="text-dark shop-item-title"><%= item.name %></h5>
+          <h5 class="text-dark shop-item-title"><%= product.name %></h5>
           <p class="small text-muted font-italic">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            <%= product.description %>
           </p>
-          <small class="shop-item-price">$<%= item.price / 100 %></small><br />
-          <% if (item.inStock === false) { %>
+          <small class="shop-item-price">$<%= product.price / 100 %></small><br />
+          <% if (product.inStock === false) { %>
             <button class="btn btn-warning mt-3 shop-item-button" disabled>Out Of Stock</button> 
           <% } else { %>
             <button class="btn btn-warning mt-3 shop-item-button">Add To Cart</button>
