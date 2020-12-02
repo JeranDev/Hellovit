@@ -93,20 +93,16 @@ app.post('/subscribe', async (req, res) => {
 
 app.post('/form', (req, res) => {
   let transporter = nodemailer.createTransport({
-    host: 'smtp.office365.com',
-    port: 587,
+    service: 'gmail',
     auth: {
-      user: process.env.JERANDEV_EMAIL,
-      pass: process.env.JERANDEV_PASSWORD,
-    },
-    tls: {
-      requireTLS: true,
+      user: process.env.HELLOVIT_EMAIL,
+      pass: process.env.HELLOVIT_PASSWORD,
     },
   })
   transporter.sendMail(
     {
-      from: 'jerandev@outlook.com',
-      to: 'jerandev@outlook.com',
+      from: 'hellovitplaceholder@gmail.com',
+      to: 'hellovitplaceholder@gmail.com',
       subject: 'Hellovit Form Submission',
       html: `
       <h2>${req.body.name}<h2>
