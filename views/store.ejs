@@ -1,5 +1,7 @@
 <%- include('partials/header') -%>
 <script src="https://js.stripe.com/v3"></script>
+<script src="./code/main.js" defer></script>
+<script> const stripePublicKey = '<%= stripePublicKey %>' </script>
 
 <!-- STORE -->
 <div class="container store-container">
@@ -49,10 +51,4 @@
   </div>
   <button class="btn email-btn btn-purchase" type="button">PURCHASE</button>
 </section>
-
-<!-- STRIPE -->
-<script>
-  const stripePublicKey = '<%= stripePublicKey %>'
-</script>
-<script src="./code/main.js"></script>
 <%- include('partials/footer') -%>
