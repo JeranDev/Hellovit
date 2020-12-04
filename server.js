@@ -8,7 +8,7 @@ const stripePublicKey = process.env.STRIPE_PUBLIC_KEY
 const express = require('express')
 const app = express()
 const fs = require('fs')
-const mongoose = require('mongoose')
+const mysql = require('mysql')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const mailchimp = require('@mailchimp/mailchimp_marketing')
@@ -19,19 +19,16 @@ app.use(express.json())
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 
-mongoose.connect(process.env.MONGO_CONNECTION, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'r00t',
+  database: 'test',
 })
 
-const Products = mongoose.model('Products', {
-  name: String,
-  price: Number,
-  imgName: String,
-  description: String,
-  stripeId: String,
-  inStock: Boolean,
-})
+connection.connect()
+
+
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
@@ -59,10 +56,9 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/store', (req, res) => {
-  Products.find({}, (err, results) => {
-    if (err) {
-      console.log(err)
-      res.status(500).end()
+  connection.query('SELECT * FROM `products` WHERE 1',  (error, results) => {
+    if (error) {
+      res.render('error', {error: error})
     } else {
       res.render('store', {
         stripePublicKey: stripePublicKey,

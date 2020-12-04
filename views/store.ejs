@@ -24,7 +24,7 @@
             <%= product.description %>
           </p>
           <small class="shop-item-price">$<%= product.price / 100 %></small><br />
-          <% if (product.inStock === false) { %>
+          <% if (!product.inStock) { %>
             <button class="btn btn-warning mt-3 shop-item-button" disabled>Out Of Stock</button> 
           <% } else { %>
             <button class="btn btn-warning mt-3 shop-item-button">Add To Cart</button>
