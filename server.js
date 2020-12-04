@@ -21,14 +21,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'r00t',
-  database: 'test',
+  user: 'hellsydk_admin',
+  password: 'G9lLKjGs&g~Q',
+  database: 'hellsydk_hellovit',
 })
 
 connection.connect()
-
-
 
 mailchimp.setConfig({
   apiKey: process.env.MAILCHIMP_API_KEY,
@@ -56,9 +54,9 @@ app.get('/about', (req, res) => {
 })
 
 app.get('/store', (req, res) => {
-  connection.query('SELECT * FROM `products` WHERE 1',  (error, results) => {
+  connection.query('SELECT * FROM `products` WHERE 1', (error, results) => {
     if (error) {
-      res.render('error', {error: error})
+      res.render('error', { error: error })
     } else {
       res.render('store', {
         stripePublicKey: stripePublicKey,
