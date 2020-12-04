@@ -37,10 +37,10 @@ function stripeHandler() {
       mode: 'payment',
       successUrl:
         window.location.protocol +
-        '//fathomless-temple-81469.herokuapp.com/success',
+        '//hellovitofficial.com/success',
       cancelUrl:
         window.location.protocol +
-        '//fathomless-temple-81469.herokuapp.com/store',
+        '//hellovitofficial.com/store',
     })
     .then(function (result) {
       if (result.error) {
