@@ -350,6 +350,13 @@ tr {
   text-align: center;
 }
 
+.about-quote {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+  color: rgba($color: #000000, $alpha: 0.5);
+  padding: 1rem 0;
+}
+
 .about-container {
   text-align: left;
 }
@@ -377,7 +384,7 @@ tr {
   .lead {
     font-family: 'Roboto', sans-serif;
     a {
-      color: $highlight-color
+      color: $highlight-color;
     }
   }
   .success-span {
