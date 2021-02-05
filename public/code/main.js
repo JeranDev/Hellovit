@@ -35,12 +35,8 @@ function stripeHandler() {
     .redirectToCheckout({
       lineItems: products,
       mode: 'payment',
-      successUrl:
-        window.location.protocol +
-        '//fathomless-temple-81469.herokuapp.com/success',
-      cancelUrl:
-        window.location.protocol +
-        '//fathomless-temple-81469.herokuapp.com/store',
+      successUrl: window.location.protocol + '/store',
+      cancelUrl: window.location.protocol + '/store',
     })
     .then(function (result) {
       if (result.error) {
