@@ -35,10 +35,8 @@ function stripeHandler() {
     .redirectToCheckout({
       lineItems: products,
       mode: 'payment',
-      successUrl:
-        window.location.protocol + '//hellovitproject.herokuapp.com/success',
-      cancelUrl:
-        window.location.protocol + '//hellovitproject.herokuapp.com/store',
+      successUrl: 'https://hellovitproject.herokuapp.com/success',
+      cancelUrl: 'https://hellovitproject.herokuapp.com/store',
     })
     .then(function (result) {
       if (result.error) {
